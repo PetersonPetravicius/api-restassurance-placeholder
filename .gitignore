@@ -1,0 +1,14 @@
+# Comentários começam com "#" e são ignorados pelo Git
+
+# Ignorar arquivos de log
+*.log
+
+# Ignorar arquivos de compilação
+*.class
+
+# Ignorar diretórios de dependências
+/bin/
+/target/
+.vscode
+
+
