@@ -6,7 +6,7 @@ Projeto Automação de API utilizando o frameWork RestAssured com o objetivo de 
 
 Essas instruções permitirão que você obtenha uma cópia do projeto em operação na sua máquina local para fins de desenvolvimento e teste.
 
-Consulte **[Implantação](#-implanta%C3%A7%C3%A3o)** para saber como implantar o projeto.
+Consulte **[Implantação](https://github.com/PetersonPetravicius/restplaceholderproject)** para saber como implantar o projeto.
 
 ### 📋 Pré-requisitos
 
@@ -45,7 +45,7 @@ Seguir o artigo detalhado para realizar o Clone deste projeto em sua maquina loc
 
 ```
 
-🏆Se chegou até aqui, então o projeto ja está disponivel para analise, codificação e execução dos testes no seu local.🏆 
+🏆Se chegou até aqui, então o projeto ja está disponivel para analise e execução dos testes no seu local.🏆 
 
 ## ⚙️ Executando os testes
 
@@ -91,7 +91,7 @@ Neste projeto as ferramentas adotadas foram:
 
 ## 📌 Versão
 
-O projeto se encontra em sua versão 1.0 
+O projeto se encontra em sua versão 1.1 
 
 ## ✒️ Autor
 
