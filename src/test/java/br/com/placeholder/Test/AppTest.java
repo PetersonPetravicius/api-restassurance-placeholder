@@ -1,14 +1,22 @@
 package br.com.placeholder.Test;
+import org.testng.annotations.AfterClass;
+import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
+import br.com.placeholder.Utils.ReportManager;
 import br.com.placeholder.Utils.Utils;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.core.IsEqual.equalTo;
 import org.json.JSONObject;
 
 public class AppTest {
+
+    @BeforeClass
+    public static void setUp() {
+        ReportManager.init("report.html");
+    }
     @Test
     public void testPostRandomUserData() {
-
+        ReportManager.createTest("test Post Random User Data");
         String requestBody = br.com.placeholder.Data.RandomDataGenerator.generateRandomUserRequestBody();
         JSONObject requestBodyJson = new JSONObject(requestBody);
         String postEndpoint = Utils.BASE_URI + Utils.USERS_ENDPOINT;
@@ -34,10 +42,14 @@ public class AppTest {
             .body("company.name", equalTo(requestBodyJson.getJSONObject("company").getString("name")))
             .body("company.catchPhrase", equalTo(requestBodyJson.getJSONObject("company").getString("catchPhrase")))
             .body("company.bs", equalTo(requestBodyJson.getJSONObject("company").getString("bs")));
+
+            ReportManager.getTest().pass("Test passed");
     }
+
     @Test
     public void testPutStaticData() {
       
+        ReportManager.createTest("test Put Static Data");
         String putJsonData = br.com.placeholder.Data.StaticJsonData.generatePutJsonData(); 
         JSONObject requestBodyJson = new JSONObject(putJsonData);
         int id = requestBodyJson.getInt("id");
@@ -64,10 +76,14 @@ public class AppTest {
         .body("company.name", equalTo(requestBodyJson.getJSONObject("company").getString("name")))
         .body("company.catchPhrase", equalTo(requestBodyJson.getJSONObject("company").getString("catchPhrase")))
         .body("company.bs", equalTo(requestBodyJson.getJSONObject("company").getString("bs")));
+
+        ReportManager.getTest().pass("Test passed");
     }
+
     @Test
     public void testGetStaticData() {
       
+        ReportManager.createTest("test Get Static Data");
         String getJsonData = br.com.placeholder.Data.StaticJsonData.generateGetJsonData(); 
         JSONObject requestBodyJson = new JSONObject(getJsonData);
         int id = requestBodyJson.getInt("id");
@@ -93,10 +109,14 @@ public class AppTest {
         .body("company.name", equalTo(requestBodyJson.getJSONObject("company").getString("name")))
         .body("company.catchPhrase", equalTo(requestBodyJson.getJSONObject("company").getString("catchPhrase")))
         .body("company.bs", equalTo(requestBodyJson.getJSONObject("company").getString("bs")));
+
+        ReportManager.getTest().pass("Test passed");
     }
+
     @Test
     public void testDeleteStaticData() {
       
+        ReportManager.createTest("test Delete Static Data");
         String deleteJsonData = br.com.placeholder.Data.StaticJsonData.generateDeleteJsonData(); 
         JSONObject requestBodyJson = new JSONObject(deleteJsonData);
         int id = requestBodyJson.getInt("id");
@@ -108,6 +128,14 @@ public class AppTest {
             .delete(deleteEndpoint)
         .then()
         .statusCode(200);
+
+        ReportManager.getTest().pass("Test passed");
+    }
+
+    @AfterClass
+    public static void tearDown() {
+        // Finaliza e gera o relatório
+        ReportManager.flush();
     }
 }
 
